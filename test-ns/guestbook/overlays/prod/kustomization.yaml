@@ -9,5 +9,6 @@ patches:
 - replica_count.yaml
 
 secretGenerator:
-  - name: guestbook-ui-secret
-    env: config/guestbook-ui-secret.txt
+- name: guestbook-ui-secret
+  envs:
+  - config/guestbook-ui-secret.txt
