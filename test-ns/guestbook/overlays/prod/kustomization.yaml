@@ -10,5 +10,5 @@ patches:
 
 secretGenerator:
 - name: guestbook-ui-secret
-  envs:
+  env:
   - config/guestbook-ui-secret.txt
