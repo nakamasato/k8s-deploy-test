@@ -20,8 +20,4 @@ spec:
         - containerPort: 80
         envFrom:
           - secretRef:
-              name: foo
-      volumes:
-        - name: foo
-          secret:
-            secretName: guestbook-ui-secret
+              name: guestbook-ui-secret
