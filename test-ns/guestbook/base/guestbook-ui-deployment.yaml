@@ -18,6 +18,3 @@ spec:
         name: guestbook-ui
         ports:
         - containerPort: 80
-        envFrom:
-          - secretRef:
-              name: guestbook-ui-secret
