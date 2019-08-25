@@ -10,4 +10,4 @@ patches:
 
 secretGenerator:
 - name: guestbook-ui
-  env: config/guestbook-ui-secret.txt
+  envs: config/guestbook-ui-secret.txt
