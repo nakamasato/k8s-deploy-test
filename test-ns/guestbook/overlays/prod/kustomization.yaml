@@ -1,4 +1,3 @@
-namePrefix: prod-
 commonLabels:
   variant: prod
 
