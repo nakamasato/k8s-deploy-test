@@ -11,3 +11,4 @@ patches:
 secretGenerator:
 - name: guestbook-ui
   envs: config/guestbook-ui-secret.txt
+  type: Opaque
