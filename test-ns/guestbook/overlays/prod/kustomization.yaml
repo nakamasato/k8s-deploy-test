@@ -8,7 +8,8 @@ bases:
 patches:
 - replica_count.yaml
 
-secretGenerator:
-- name: guestbook-ui
-  env: config/guestbook-ui-secret.txt
-  type: Opaque
+# secretGenerator:
+# - name: guestbook-ui
+#   # paths to files with k=v pairs, one pair per line.
+#   env: config/guestbook-ui-secret.txt
+#   type: Opaque

@@ -5,3 +5,11 @@ resources:
 - guestbook-ui-svc.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
+secretGenerator:
+- name: mysecrets
+  envs:
+  - foo.env
+  literals:
+  - FRUIT=apple
+  - VEGETABLE=carrot
