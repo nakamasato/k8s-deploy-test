@@ -1,9 +1,0 @@
-namePrefix: dev-
-commonLabels:
-  variant: dev
-
-bases:
-- ../../base
-
-patches:
-- replica_count.yaml
