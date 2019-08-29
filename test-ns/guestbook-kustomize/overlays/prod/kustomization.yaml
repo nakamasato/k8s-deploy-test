@@ -1,0 +1,14 @@
+commonLabels:
+  variant: prod
+
+bases:
+- ../../base
+
+patches:
+- replica_count.yaml
+
+secretGenerator:
+- name: guestbook-ui
+  envs:
+  - config/guestbook-ui-secret.txt
+  type: Opaque
