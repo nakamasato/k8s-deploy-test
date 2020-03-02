@@ -1,0 +1,25 @@
+name: k3s-action
+
+on: [pull_request]
+
+jobs:
+  run-guestbook-on-k3s:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup k3s
+        run: curl -sfL https://get.k3s.io | sh -
+      - name: set kubeconfig
+        env:
+          KUBECONFIG: /etc/rancher/k3s/k3s.yaml
+        run: sudo mkdir ~/.kube && sudo cp ${KUBECONFIG} ~/.kube/config
+      - name: test
+        run: |
+          sleep 10
+          sudo kubectl get nodes
+          sudo kubectl get pod -A
+      - name: Deploy guestbook
+        run: |
+          sudo kubectl create namespace test-ns
+          sudo kubectl apply -f test-ns/guestbook/
+          sudo kubectl get pod -n test-ns
