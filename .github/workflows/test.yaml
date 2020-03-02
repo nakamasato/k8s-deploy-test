@@ -21,4 +21,8 @@ jobs:
           sudo kubectl get nodes
           sleep 10
           sudo kubectl get pod -A
-
+      - name: Deploy guestbook
+        run: |
+          sudo kubectl create namespace test-ns
+          sudo kubectl -f test-ns/guestbook/
+          sodo kubectl get pod -n test-ns
