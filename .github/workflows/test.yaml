@@ -1,0 +1,24 @@
+name: k3s-action
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup k3s
+        run: curl -sfL https://get.k3s.io | sh -
+      - name: set kubeconfig
+        env:
+          KUBECONFIG: /etc/rancher/k3s/k3s.yaml
+        run: sudo mkdir ~/.kube && sudo cp ${KUBECONFIG} ~/.kube/config
+      - name: test
+        run: |
+          sleep 10
+          sudo kubectl get nodes
+          sleep 10
+          sudo kubectl get nodes
+          sleep 10
+          sudo kubectl get pod -A
+
