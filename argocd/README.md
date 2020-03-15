@@ -103,23 +103,47 @@ kubectl port-forward svc/argocd-server -n argocd 8080:80
     ```
     kubectl apply -f project/namespace/app-namespace.yaml
     application.argoproj.io/namespace created
-    ``` 
+    ```
 
-## Create Project
+1. Check the namespace
 
-Reference: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/project.yaml
+    ```
+    kubectl get namespace
+    NAME              STATUS   AGE
+    kube-system       Active   78m
+    default           Active   78m
+    kube-public       Active   78m
+    kube-node-lease   Active   78m
+    argocd            Active   72m
+    test-ns           Active   16s
+    ```
 
-```
-kubectl apply -f project/test/project.yaml
-```
+## Create AppProject and Application for `guestbook`
+
+1. Create `test` AppProject
+
+    ```
+    kubectl apply -f project/test/project.yaml
+    appproject.argoproj.io/test created
+    ```
+
+1. Create `guestbook` Application
 
 
-## Create Application
+    ```
+    kubectl apply -f project/test/app-guestbook.yaml
+    application.argoproj.io/guestbook created
+    ```
 
+1. Check the application
 
-```
-kubectl apply -f project/test/app-guestbook.yaml
-```
+    ```
+    kubectl get pod -n test-ns
+    NAME                            READY   STATUS    RESTARTS   AGE
+    guestbook-ui-65b878495d-4wcn8   1/1     Running   0          86s
+    guestbook-ui-65b878495d-jfqph   1/1     Running   0          86s
+    guestbook-ui-65b878495d-dx4kz   1/1     Running   0          86s
+    ```
 
 # Kustomize
 
