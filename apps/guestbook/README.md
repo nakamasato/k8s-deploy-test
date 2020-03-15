@@ -10,10 +10,15 @@ tree
 0 directories, 3 files
 ```
 
+# Deploy with Argo CD
 
-# Argo CD
+## 1. With Yaml file
 
-## create an application
+Please refer to [Create AppProject and Application for guestbook](../argocd#create-appproject-and-application-for-guestbook)
+
+## 1. With CLI command (Not recommended)
+
+### Create an app
 
 ```
 argocd app create guestbook \
@@ -26,7 +31,7 @@ argocd app create guestbook \
 application 'guestbook' created
 ```
 
-## delete the app
+### Delete the app
 
 ```
 argocd app delete guestbook

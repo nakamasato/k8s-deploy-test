@@ -1,23 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook
+  name: guestbook-kustomize-prod
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: test
+  project: prod
 
   # Source of the application manifests
   source:
     repoURL: https://github.com/nakamasato/k8s-deploy-test.git
     targetRevision: master
-    path: apps/guestbook
+    path: apps/guestbook-kustomize/overlays/prod
 
   # Destination cluster and namespace to deploy the application
   destination:
     server: https://kubernetes.default.svc
-    namespace: test-ns
+    namespace: prod
 
   # Sync policy
   syncPolicy:
