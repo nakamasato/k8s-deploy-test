@@ -20,6 +20,6 @@ jobs:
           sudo kubectl get pod -A
       - name: Deploy guestbook
         run: |
-          sudo kubectl create namespace test-ns
-          sudo kubectl apply -f test-ns/guestbook/
+          sudo kubectl apply -f namespace/test-ns.yaml
+          sudo kubectl apply -f apps/guestbook/
           sudo kubectl get pod -n test-ns

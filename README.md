@@ -54,23 +54,16 @@ Run guestbook on k3s
 ± tree -L 2
 .
 ├── README.md
+├── apps
+│   ├── guestbook
+│   └── guestbook-kustomize
 ├── argocd
 │   ├── README.md
-│   ├── argcocd-v1.2.0-rc2-bebit.yaml
-│   ├── argcocd-v1.2.0-rc2.yaml
-│   ├── namespace.yaml
-│   ├── route53-change-batch-dev-eks-cluster.json
-│   ├── sealed-secrets.yaml
-│   ├── set_new_passwd.sh
-│   └── update_route53.sh
-├── kamus
-│   ├── Chart.yaml
-│   ├── OWNERS
-│   ├── README.md
-│   ├── templates
-│   └── values.yaml
-└── test-ns
-    ├── guestbook
-    ├── guestbook-kustomize
-    └── guestbook-kustomize-with-secret
+│   ├── project
+│   └── setup
+└── namespace
+    ├── README.md
+    ├── dev.yaml
+    ├── prod.yaml
+    └── test-ns.yaml
 ```
