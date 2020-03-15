@@ -7,4 +7,6 @@ bases:
 
 patchesStrategicMerge:
   - replica_count.yaml
+
+resources:
   - secret_sample.yaml
