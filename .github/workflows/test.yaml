@@ -33,9 +33,10 @@ jobs:
           # echo "```diff" >> comments
           # echo "```" >> comments
           echo "1st" >> comments
-          echo "2nd" >> comments
-          sudo kubectl diff -f apps/guestbook/ || true >> comments
-          echo "3rd" >> comments
+          echo '```' >> comments
+          d=$(sudo kubectl diff -f apps/guestbook/ || true)
+          echo $d >> comments
+          echo '```' >> comments
           sed -i -z 's/\n/\\n/g' comments
 
       - name: Post multi-line comments
