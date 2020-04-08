@@ -6,8 +6,11 @@ jobs:
   run-guestbook-on-k3s:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Setup k3s
+      - name: checkout to master
+        uses: actions/checkout@v1
+        with:
+          ref: master
+      - name: set up k3s
         run: curl -sfL https://get.k3s.io | sh -
       - name: set kubeconfig
         env:
@@ -18,8 +21,13 @@ jobs:
           sleep 10
           sudo kubectl get nodes
           sudo kubectl get pod -A
-      - name: Deploy guestbook
+      - name: deploy guestbook
         run: |
           sudo kubectl apply -f namespace/test-ns.yaml
           sudo kubectl apply -f apps/guestbook/
           sudo kubectl get pod -n test-ns
+      - name: checkout to current branch
+        uses: actions/checkout@v1
+      - name: diff
+        run: |
+          sudo kubectl diff -f apps/guestbook/
