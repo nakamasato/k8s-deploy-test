@@ -30,4 +30,16 @@ jobs:
         uses: actions/checkout@v1
       - name: diff
         run: |
-          sudo kubectl diff -f apps/guestbook/
+          echo "```diff" >> comments
+          sudo kubectl diff -f apps/guestbook/ || true >> comments
+          echo "```" >> comments
+
+      - name: Post multi-line comments
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.comments_url }}
+        run: |
+          curl -X POST \
+              -H "Authorization: token ${GITHUB_TOKEN}" \
+              -d "{\"body\": \"$(cat comments)\"}" \
+              ${URL}
