@@ -31,9 +31,10 @@ jobs:
       - name: diff
         run: |
           echo '```diff' >> comments
-          # d=$(sudo kubectl diff -f apps/guestbook/ || true)
-          # echo $d >> comments
-          echo 'check' >> comments
+          d=$(sudo kubectl diff -f apps/guestbook/ || true)
+          echo $d
+          echo '+check' >> comments
+          echo '-check' >> comments
           echo '```' >> comments
           sed -i -z 's/\n/\\n/g' comments
 
