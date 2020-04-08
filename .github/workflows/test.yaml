@@ -32,11 +32,11 @@ jobs:
         run: |
           echo '```diff' >> comments
           d=$(sudo kubectl diff -f apps/guestbook/ || true)
-          echo $d
+          echo $d >> comments
           echo '+check' >> comments
           echo '-check' >> comments
           echo '```' >> comments
-          sed -i -z 's/\n/\\n/g' comments
+          sed -i -z 's/\n/\\n/g;s/\b/\\b/g;s/\f/\\f/g;s/\r/\\r/g;s/\t/\\t/g;s/\"/\\"/g;s/\\/\\\\/g'  comments
 
       - name: Post multi-line comments
         env:
