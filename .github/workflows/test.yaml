@@ -30,12 +30,10 @@ jobs:
         uses: actions/checkout@v1
       - name: diff
         run: |
-          # echo "```diff" >> comments
-          # echo "```" >> comments
-          echo "1st" >> comments
-          echo '```' >> comments
-          d=$(sudo kubectl diff -f apps/guestbook/ || true)
-          echo $d >> comments
+          echo '```diff' >> comments
+          # d=$(sudo kubectl diff -f apps/guestbook/ || true)
+          # echo $d >> comments
+          echo 'check' >> comments
           echo '```' >> comments
           sed -i -z 's/\n/\\n/g' comments
 
